@@ -1,3 +1,4 @@
+" Infect with pathogen
 execute pathogen#infect()
 
 "General Settings
@@ -6,11 +7,12 @@ filetype indent on
 set autoread
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=0
 
-let mapleader=","
-let g:mapleader=","
-
 set so=7
+
+set path+=**
 set wildmenu
+set wildignore+=*/node_modules/*
+
 set ruler
 set cmdheight=1
 set hid
@@ -22,7 +24,6 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch
-set lazyredraw
 set magic
 set showmatch
 set mat=2
@@ -35,7 +36,10 @@ set tm=500
 set number
 syntax enable
 set background=dark
-colorscheme solarized
+color solarized
+set cursorline
+hi cursorline cterm=none term=none
+highlight CursorLine guibg=#303000 ctermbg=234
 
 set encoding=utf8
 set ffs=unix,dos,mac
@@ -54,52 +58,29 @@ set ai
 set si
 set wrap
 
-
-
-
-
-"Block Folding
+"Block folding
 set foldenable
 set foldlevelstart=4
 set foldnestmax=10
-nnoremap <space> za
 set foldmethod=indent
 
+"Keybindings
+let mapleader=','
+let g:mapleader=','
 
-" Key Mappings
-nnoremap j gj
-nnoremap k gk
-nnoremap B ^
-nnoremap E $
-
-nnoremap $ <nop>
-nnoremap ^ <nop>
-
-nmap <silent> <leader>ev :e ~/.vimrc<CR>
-nmap <silent> <leader>sv :so ~/.vimrc<CR>
-nmap <silent> <leader>bv :e ~/.bashrc<CR>
-nnoremap <leader><space> :nohlsearch<CR>
-
-nmap <leader>w ;w<CR>
-
+nnoremap <space> za
+nnoremap <CR> G
 nnoremap ; :
 vnoremap ; :
+nnoremap <silent> <leader>ev :e ~/.vimrc<CR>
+nnoremap <silent> <leader>sv :so ~/.vimrc<CR>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
+nnoremap <silent> <leader>t mzgg=G`z
+nnoremap <silent> <leader>f :find
+nnoremap <silent> <leader>wa :wa<CR>
 
-nnoremap <CR> G
+nnoremap <silent> <leader>lp :read ~/.vim/templates/theloop.php<CR>
 
-map <C-n> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-let g:NERDTreeChDirMode       = 2
-let g:jsx_ext_required = 0
-set laststatus=2
-
-let g:netrw_browse_split = 4
-let g:netrw_altv1 = 1
-
-
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-let g:ctrlp_working_path_mode= 'w'
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
+" Plugin Options
+" JSX Syntax
+let g:jsx_ext_required=0

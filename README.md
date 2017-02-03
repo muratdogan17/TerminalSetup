@@ -1,11 +1,18 @@
-# TerminalSetup
-Dotfiles for my terminal setup, including vim and fish config
+# Setup
+Make sure zsh is the active shell, tmux and vim are installed.
 
+Clone the repo and copy the corresponding dot files into your home directory.
 
-#Setup
+I personally use hyper.app as my default terminal emulator, but configs should work without any issue on others.
 
-Fish as primary shell https://github.com/fish-shell/fish-shell
+# Plugins
 
-The Fuck just because its awesome https://github.com/nvbn/thefuck
+PHP-Indenting-for-VIm
+vim-colors-solarized
+tpope/vim-surround
 
-Copy the config.fish file into your ~/.config/fish/ directory
+# Config files
+.vimrc
+.zshrc
+.tmux.conf
+
