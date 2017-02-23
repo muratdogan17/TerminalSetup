@@ -1,39 +1,57 @@
-source $(brew --prefix)/share/antigen/antigen.zsh
+## Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
-antigen use oh-my-zsh
-antigen bundle git
-antigen bundle pip
-antigen bundle autojump
-antigen bundle command-not-found
-antigen bundle brew
-antigen bundle common-aliases
-antigen bundle compleat
-antigen bundle git-extras
-antigen bundle git-flow
-antigen bundle npm
-antigen bundle osx
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
-antigen bundle zsh-users/zsh-autosuggestions
+#Exports
+eval $(thefuck --alias)
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export TERM=xterm-256color
+[ -n "$TMUX" ] && export TERM=screen-256color
+export PATH=~/.npm-global/bin:$PATH
+export GITHUB_USER="tallestthomas"
+export EDITOR="vim"
 
-#Load theme
-antigen theme avit
+export WP_CLI_PHP="/Applications/MAMP/bin/php/php7.1.0/bin/php"
 
-#apply antigen stuff
-antigen apply
 
+export ZGEN_RESET_ON_CHANGE=($HOME/.zshrc)
+source "${HOME}/.zgen/zgen.zsh"
+
+if ! zgen saved; then
+  zgen prezto prompt theme 'minimal'
+
+  zgen prezto
+  zgen prezto git
+  zgen prezto syntax-highlighting
+
+  zgen save
+fi
+
+function tmuxopen() {
+  tmux attach -t $1
+}
+
+function tmuxnew() {
+  tmux new -s $s
+}
+
+function tmuxkill() {
+  tmux kill-session -t $1
+}
 
 [[ -s "$HOME/.rvm/scripts/rvm"  ]] && . "$HOME/.rvm/scripts/rvm" 
 
-export TERM=xterm-256color
-[ -n "$TMUX" ] && export TERM=screen-256color
-
-if [ -z $TMUX  ]; then; tmux; fi
-
-export PATH=~/.npm-global/bin:$PATH
-
+# Aliases
 alias zconf="vim ~/.zshrc"
 alias hconf="vim ~/.hyper.js"
-alias reconf="source ~/.zshrc"
+alias vconf="vim ~/.vimrc"
+alias r="source ~/.zshrc"
+alias vi="vim"
+alias tat='tmux new-session -As $(basename "$PWD" | tr . -)'
+alias tmuxsrc="tmux source-file ~/.tmux.conf"
+alias tmuxkillall="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}"
 
-eval $(thefuck --alias)
+alias wp='php /Applications/MAMP/bin/php/php7.1.0/bin/wp-cli.phar'
+
+

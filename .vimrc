@@ -69,18 +69,34 @@ let mapleader=','
 let g:mapleader=','
 
 nnoremap <space> za
-nnoremap <CR> G
-nnoremap ; :
-vnoremap ; :
 nnoremap <silent> <leader>ev :e ~/.vimrc<CR>
-nnoremap <silent> <leader>sv :so ~/.vimrc<CR>
+nnoremap <silent> <leader>rv :so ~/.vimrc<CR>
 nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> <leader>t mzgg=G`z
-nnoremap <silent> <leader>f :find
+nnoremap <silent> <leader>f :find<space>
+nnoremap <silent> <leader>sf :sfind<space>
+nnoremap <silent> <leader>vf :vert sfind<space>
 nnoremap <silent> <leader>wa :wa<CR>
+nnoremap <silent> <leader>w :w<CR>
 
 nnoremap <silent> <leader>lp :read ~/.vim/templates/theloop.php<CR>
+
 
 " Plugin Options
 " JSX Syntax
 let g:jsx_ext_required=0
+
+"Syntastic
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntatstic_check_on_wq = 0
+let g:syntatstic_javascript_checkers = ['eslint']
+
+"NerdTree
+map <silent><C-n> :NERDTreeToggle<CR>
