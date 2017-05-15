@@ -1,18 +1,36 @@
+My Personal terminal setup for web development.
+
+For my terminal I use Zeit's [hyper.app](https://github.com/zeit/hyper)
+
+** I highly reccomend that you take a look around in each config file to get an
+idea of what I like to use. But I won't say you should copy it exactly, each
+person's preference is totally different. Feel free to clone it and make it your
+own :) **
+
+# Requirements
+- Zsh
+- [Zgen](https://github.com/tarjoilija/zgen)
+- VIm
+- [Pathogen for Vim](https://github.com/tpope/vim-pathogen)
+- Tmux
+
 # Setup
-Make sure zsh is the active shell, tmux and vim are installed.
+Copy all the dot files ( zshrc, vimrc, tmux.conf ) to your home directory
 
-Clone the repo and copy the corresponding dot files into your home directory.
-
-I personally use hyper.app as my default terminal emulator, but configs should work without any issue on others.
-
-# Plugins
-
-PHP-Indenting-for-VIm
-vim-colors-solarized
-tpope/vim-surround
-
-# Config files
-.vimrc
-.zshrc
-.tmux.conf
+# Vim Plugins
+[ack.vim](https://github.com/mileszs/ack.vim)
+[ale](https://github.com/w0rp/ale)
+[ctrlp.vim](https://github.com/kien/ctrlp.vim)
+[javascript-libraries-syntax.vim](https://github.com/othree/javascript-libraries-syntax.vim)
+[molokai](https://github.com/tomasr/molokai)
+[nerdcommenter](https://github.com/scrooloose/nerdcommenter)
+[nerdtree](https://github.com/scrooloose/nerdtree)
+[seiya.vim](https://github.com/miyakogi/seiya.vim)
+[tern_for_vim](https://github.com/ternjs/tern_for_vim)
+[vim-fugitive](https://github.com/tpope/vim-fugitive)
+[vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax)
+[vim-jsx](https://github.com/mxw/vim-jsx)
+[vim-styled-components](https://github.com/fleischie/vim-styled-components)
+[vim-surround](https://github.com/tpope/vim-surround)
+[youcompleteme](https://valloric.github.io/YouCompleteMe/)
 

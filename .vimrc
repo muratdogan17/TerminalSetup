@@ -1,102 +1,119 @@
-" Infect with pathogen
 execute pathogen#infect()
 
 "General Settings
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 set autoread
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=0
+autocmd * setlocal formatoptions-=c formatoptions-=r formatoptions-=0
+set t_Co=256
+set t_AB=[48;5;%dm
+set t_AF=[38;5;%dm
 
-set so=7
 
-set path+=**
-set wildmenu
-set wildignore+=*/node_modules/*
-
-set ruler
-set cmdheight=1
-set hid
 
 set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
 
+" Search Settings
 set ignorecase
 set smartcase
 set hlsearch
 set incsearch
 set magic
 set showmatch
-set mat=2
+set mat=5
 
+"Bell Settings
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
 
-set number
-syntax enable
-set background=dark
-color solarized
-set cursorline
-hi cursorline cterm=none term=none
-highlight CursorLine guibg=#303000 ctermbg=234
-
+"File Settings
 set encoding=utf8
-set ffs=unix,dos,mac
-
+set fileformats=unix,dos,mac
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
+"Tab Settings
 set expandtab
 set smarttab
 set shiftwidth=2
 set tabstop=2
-set lbr
-set tw=500
-set ai
-set si
+set linebreak
+set autoindent
+set smartindent
 set wrap
 
-"Block folding
+"Fold Settings
 set foldenable
-set foldlevelstart=4
+set foldlevelstart=2
 set foldnestmax=10
 set foldmethod=indent
 
-"Keybindings
-let mapleader=','
-let g:mapleader=','
+"Color Settings
+set hid
+syntax enable
+set number
+set background=dark
+let g:seiya_auto_enable=1
+colorscheme molokai
 
+"Keybind Settings
+let mapleader=","
+imap jk <Esc>
 nnoremap <space> za
 nnoremap <silent> <leader>ev :e ~/.vimrc<CR>
-nnoremap <silent> <leader>rv :so ~/.vimrc<CR>
+nnoremap <silent> <leader>sv :so ~/.vimrc<CR>
 nnoremap <silent> <leader><space> :nohlsearch<CR>
 nnoremap <silent> <leader>t mzgg=G`z
-nnoremap <silent> <leader>f :find<space>
-nnoremap <silent> <leader>sf :sfind<space>
-nnoremap <silent> <leader>vf :vert sfind<space>
 nnoremap <silent> <leader>wa :wa<CR>
 nnoremap <silent> <leader>w :w<CR>
+nnoremap j gj
+nnoremap k gk
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
-nnoremap <silent> <leader>lp :read ~/.vim/templates/theloop.php<CR>
-
-
-" Plugin Options
-" JSX Syntax
+"Plugin Settings
 let g:jsx_ext_required=0
 
-"Syntastic
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:crlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:crtlp_use_caching = 0
+endif
+set wildignore+=*/node_modules/*
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+let g:ctrlp_working_path='a' 
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntatstic_check_on_wq = 0
-let g:syntatstic_javascript_checkers = ['eslint']
+let g:ale_linters = {
+            \ 'javascript': ['eslint'],
+            \}
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_save = 1
 
-"NerdTree
-map <silent><C-n> :NERDTreeToggle<CR>
+let g:multi_cursor_start_key='<F5>'
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-k>'
+let g:multi_cursor_quit_key='<Esc>'
+
+"Word Count
+function! WordCount()
+    let s:old_status=v:statusmsg
+    let position=getpos(".")
+    exe ":silent normal g\<c-g>"
+    let stat=v:statusmsg
+    let s:word_count=0
+    if stat != '--No lines in buffer--'
+        let s:word_count=str2nr(split(v:statusmsg)[11])
+        let v:statusmsg=s:old_status
+    end
+    call setpos('.', position)
+    return s:word_count
+endfunction
+
+"Status Line Settings
+set laststatus=2
+set statusline=%F%m%r%h%w%=
+au BufRead,BufNewFile *.md setlocal statusline+=\ WordCount:%{WordCount()}
+set statusline+=\ Column:%c%V\ [line\ %l\/%L]
+set statusline+=\ \[%{strftime('%Y/%b/%d\ %a\ %I:%M\ %p')}\]
+au BufRead,BufNewFile *.md setlocal textwidth=80
