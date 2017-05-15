@@ -13,6 +13,7 @@ own :)**
 - VIm
 - [Pathogen for Vim](https://github.com/tpope/vim-pathogen)
 - Tmux
+- [The Fuck](https://github.com/nvbn/thefuck)
 
 # Setup
 Copy all the dot files ( zshrc, vimrc, tmux.conf ) to your home directory
