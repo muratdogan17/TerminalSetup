@@ -1,6 +1,7 @@
-My Personal terminal setup for web development.
+My personal terminal setup for javascript and wordpress development.
 
-For my terminal I use Zeit's [hyper.app](https://github.com/zeit/hyper)
+For my terminal I use Zeit's [hyper.app](https://github.com/zeit/hyper) which I
+reccomend fully.
 
 **I highly reccomend that you take a look around in each config file to get an
 idea of what I like to use. But I won't say you should copy it exactly, each
@@ -10,42 +11,18 @@ own :)**
 # Requirements
 - Zsh
 - [Zgen](https://github.com/tarjoilija/zgen)
-- VIm
-- [Pathogen for Vim](https://github.com/tpope/vim-pathogen)
+- [NeoVim](https://neoivm.io)
+- [Vim-plug](https://github.com/junngunn/vim-plug)
 - Tmux
 - [The Fuck](https://github.com/nvbn/thefuck)
 
 # Setup
-Copy all the dot files ( zshrc, vimrc, tmux.conf ) to your home directory
-
-# Vim Plugins
-[ack.vim](https://github.com/mileszs/ack.vim)
-
-[ale](https://github.com/w0rp/ale)
-
-[ctrlp.vim](https://github.com/kien/ctrlp.vim)
-
-[javascript-libraries-syntax.vim](https://github.com/othree/javascript-libraries-syntax.vim)
-
-[molokai](https://github.com/tomasr/molokai)
-
-[nerdcommenter](https://github.com/scrooloose/nerdcommenter)
-
-[nerdtree](https://github.com/scrooloose/nerdtree)
-
-[seiya.vim](https://github.com/miyakogi/seiya.vim)
-
-[tern_for_vim](https://github.com/ternjs/tern_for_vim)
-
-[vim-fugitive](https://github.com/tpope/vim-fugitive)
-
-[vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax)
-
-[vim-jsx](https://github.com/mxw/vim-jsx)
-
-[vim-styled-components](https://github.com/fleischie/vim-styled-components)
-
-[vim-surround](https://github.com/tpope/vim-surround)
-
-[youcompleteme](https://valloric.github.io/YouCompleteMe/)
+1. Fork this repo and clone it locally
+2. Make sure all the requirements are installed
+3. Copy `.tmux.conf` and `.zshrc` to your home directory
+4. Reload your terminal or use the command `source ~/.zshrc` to reload
+5. Copy `init.vim` to `~/.config/nvim/`
+6. Open vim and enter the command `:PlugInstall`, this should run an
+   installation for all the plugins. If that does not work at first, try using
+   the command `source ~/.config/nvim/init.vim` then try again.
 
