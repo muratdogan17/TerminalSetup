@@ -6,7 +6,7 @@ reccomend fully.
 **I highly reccomend that you take a look around in each config file to get an
 idea of what I like to use. But I won't say you should copy it exactly, each
 person's preference is totally different. Feel free to clone it and make it your
-own :)**
+own** :smile:
 
 # Requirements
 - Zsh
