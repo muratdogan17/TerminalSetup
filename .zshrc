@@ -5,11 +5,12 @@ fi
 
 #Exports
 eval $(thefuck --alias)
-export ANDROID_HOME=/usr/local/opt/android-sdk
 export GITHUB_USER="tallestthomas"
 export EDITOR="vim"
-export PATH="/usr/local/bin:/Applications/MAMP/bin/php/php7.1.1/bin:$PATH:/Applications/MAMP/Library/bin"
-export PATH=$PATH:"./node_modules/.bin/"
+export PATH=$PATH:"./node_modules/.bin"
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 
 export ZGEN_RESET_ON_CHANGE=($HOME/.zshrc)
@@ -42,21 +43,41 @@ function tmuxkill() {
 }
 
 # Aliases
-alias vim="nvim"
+## Configuration
 alias zconf="vim ~/.zshrc"
 alias hconf="vim ~/.hyper.js"
 alias vconf="vim ~/.config/nvim/init.vim"
-alias r="source ~/.zshrc"
+
+## Vim Stuff
+alias vim="nvim"
 alias vi="vim"
+
+## Tmux
 alias tat='tmux new-session -As $(basename "$PWD" | tr . -)'
 alias tmuxsrc="tmux source-file ~/.tmux.conf"
 alias tmuxkillall="tmux ls | cut -d : -f 1 | xargs -I {} tmux kill-session -t {}"
-alias l="ls -la"
-alias vhost="sudo vim /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf"
-alias jekyll="bundle exec jekyll"
+
+## Navigation
 alias ..="cd .."
 alias ...="cd ../.."
+alias .3="cd ../../../"
+alias .4="cd ../../../../"
+alias work='cd ~/Local\ Sites'
+alias dev='cd ~/dev'
+
+## Single letter
+alias c="clear"
+alias r="source ~/.zshrc"
+alias l="ls -la"
+
+##Applications
 alias cra='create-react-app'
+
+## Functions
+trash () { command mv "$@" ~/.Trash }
+ql () { qlmanage -p "$*" >& /dev/null }
+findPid () { lsof -t -c "$@"; } 
+cpuHogs () { ps wwaxr -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
 
 unsetopt correct
 unsetopt auto_name_dirs

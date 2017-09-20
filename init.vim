@@ -1,7 +1,9 @@
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'posva/vim-vue'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'jaxbot/semantic-highlight.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
 Plug 'lumiliet/vim-twig'
 Plug 'scrooloose/nerdtree'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -28,8 +30,6 @@ Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'airblade/vim-gitgutter'
 Plug 'amadeus/vim-mjml'
-Plug 'shawncplus/phpcomplete.vim'
-Plug 'dsawardekar/wordpress.vim'
 Plug 'miyakogi/seiya.vim'
 call plug#end()
 
@@ -81,10 +81,10 @@ set smartindent
 set wrap
 
 "Fold Settings
-"set foldenable
-"set foldlevelstart=2
-"set foldnestmax=10
-"set foldmethod=indent
+set foldenable
+set foldlevelstart=2
+set foldnestmax=10
+set foldmethod=indent
 
 "Color Settings
 set hid
@@ -125,8 +125,8 @@ let g:closetag_filenames = "*.html, *.php, *.js, *.mjml, *.ejs"
 
 let g:deoplete#enable_at_startup = 1
 autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:UltiSnipsExpandTrigger="<C-j>"
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 let g:tern_request_timeout = 1
 let g:tern_show_signature_in_pum = '0'
