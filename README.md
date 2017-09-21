@@ -11,8 +11,8 @@ own** :smile:
 # Requirements
 - Zsh
 - [Zgen](https://github.com/tarjoilija/zgen)
-- [NeoVim](https://neoivm.io)
-- [Vim-plug](https://github.com/junngunn/vim-plug)
+- [NeoVim](https://neovim.io)
+- [Vim-plug](https://github.com/junegunn/vim-plug)
 - Tmux
 - [The Fuck](https://github.com/nvbn/thefuck)
 
